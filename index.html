@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+	<meta charset="UTF-8">
+	<title>SD Origins Tube</title>
+	<meta name="title" content="PlayTube - The Ultimate Video Sharing Platform">
+	<meta name="description" content="PlayTube is a PHP Video Sharing Script, PlayTube is the best way to start your own video sharing script! Anish Khatri">
+	<meta name="keywords" content="playtube,sharevideo,share,upload,videos">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="fb:app_id" content="1643990952546825" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+    <link rel="shortcut icon" type="image/png" href="https://playtubescript.com/themes/youplay/img/icon.png"/>
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/jquery.tagit.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/twemoji-awesome.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/js/lib/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/js/lib/notifIt/notifIt/css/notifIt.min.css">
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/style.css" id="style-css">
+      
+
+    <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/css/custom.style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,500" rel="stylesheet">
+    <script src="https://playtubescript.com/themes/youplay/js/jquery-3.min.js"></script>
+    <script src="https://playtubescript.com/themes/youplay/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://playtubescript.com/themes/youplay/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="https://playtubescript.com/themes/youplay/js/tag-it.min.js"></script>
+          <link rel="stylesheet" href="https://playtubescript.com/themes/youplay/player/css/mediaelementplayer.min.css" />
+      
+<body itemscope itemtype="http://schema.org/Organization" id="pt-body">
+<style>
+  #style-selector {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    z-index: 100000;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.14);
+    background: #fff;
+    height: 100%;
+    width: 280px;
+}
+.ss-gray {
+  color: #777 !important;
+  padding: 5px !important;
+  font-size: 14px !important;
+}
+#style-selector .style-toggle {
+    width: 52px;
+    height: 56px;
+    cursor: pointer;
+    opacity: 1;
+    background: #fff;
+    -moz-border-radius: 0px 5px 5px 0px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    -webkit-box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.14);
+    float: right;
+    margin-right: -52px;
+    margin-top: 250px;
+    top: 100px;
+}
+#style-selector .style-toggle:before {
+    color: #000000;
+    content: "\f1fc";
+    font-family: fontawesome;
+    font-size: 23px;
+    font-weight: lighter !important;
+    line-height: 56px;
+    text-align: center;
+    padding-left: 15px;
+}
+#style-selector-container {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.ss-content {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 25px;
+    margin: 0 30px 35px;
+}
+.ss-content-first {
+    padding-top: 30px;
+    padding-bottom: 0;
+    border: none;
+}
+.ss-button {
+    height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  text-decoration:none;
+}
+.buy-button {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    background-color: #2196f3;
+  font-family:lato;
+  font-weight:bold;
+}
+.buy-button:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color:#2c85c9;
+}
+.ss-no-styles {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.ss-title {
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+    display: block;
+    margin-bottom: 15px;
+  font-family: arial;
+}
+.demos-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    border: none;
+}
+#style-selector .demo-sites a {
+    float: left;
+    width: 100%;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  position: relative;
+}
+#style-selector .demo-sites .demo .demo-bg {
+    width: 100%;
+  display: block;
+}
+#style-selector .demo-sites .demo .demo-bg img{
+  width: 100%;
+}
+#style-selector .demo-sites .demo .demo-name {
+    display: none;
+}
+#style-selector .demo-sites .demo:nth-child(even) {
+    margin-right: 0;
+}
+#style-selector .demo-sites .demo .new-demo-badge {
+    background: rgba(213, 78, 33, 0.95) none repeat scroll 0 0;
+    color: #fff;
+    padding: 0px 5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 20px;
+    font-size: 13px;
+    line-height: 1.7em;
+  font-family: arial;
+}
+</style>
+  <div id="bar_loading"></div>
+		<input type="hidden" class="main_session" value="664b0ec2b6bd0af879f7b9f82205e8639159d7fd">
+		<header class="navbar-fixed-top">
+		<nav class="navbar navbar-findcond navbar-fixed-top header-layout">
+	<div class="container-fluid">
+		<div class="navbar-header pull-left">
+												<div class="toggle-mode hidden-xs pull-left top-header">
+						<label class="switch" data-toggle="tooltip" data-placement="bottom" title="Mode">
+							<input type="checkbox"  id="toggle-mode">
+							<span class="slider round">
+								<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-bulb"><path d="M12,6A6,6 0 0,1 18,12C18,14.22 16.79,16.16 15,17.2V19A1,1 0 0,1 14,20H10A1,1 0 0,1 9,19V17.2C7.21,16.16 6,14.22 6,12A6,6 0 0,1 12,6M14,21V22A1,1 0 0,1 13,23H11A1,1 0 0,1 10,22V21H14M20,11H23V13H20V11M1,11H4V13H1V11M13,1V4H11V1H13M4.92,3.5L7.05,5.64L5.63,7.05L3.5,4.93L4.92,3.5M16.95,5.63L19.07,3.5L20.5,4.93L18.37,7.05L16.95,5.63Z" /></svg>
+							</span>
+						</label>
+					</div>
+														<div class="pull-left yp_slide_menu">
+					<span id="open_slide">
+						<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+					</span>
+				</div>
+						<a class="navbar-brand logo-img" href="" itemprop="url">
+									<img itemprop="logo" src="https://sdoriginspro.github.io/SD-Origins-Tube/logo.png" alt="PlayTube - The Ultimate Video Sharing Platform">
+							</a>
+			<form class="navbar-form navbar-left search-header pull-left" role="search" action="https://playtubescript.com/search" method="GET">
+            </form>
+		</div>
+		<div class="pull-right">
+			<ul class="nav navbar-nav navbar-right pull-right">
+								 
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<nav class="navbar navbar-findcond navbar-fixed-top header-layout hidden search-bar">
+    <div class="container-fluid">
+		<form class="search-header-mobile" role="search" action="https://playtubescript.com/search" method="GET">
+			<div class="form-group">
+				<input type="text" class="form-control" id="search-bar-mobile" name="keyword" placeholder="Search for videos" autocomplete="off" value="" autofocus>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+			</div>
+			<div class="search-dropdown hidden"></div>
+		</form>
+	</div>
+</nav>
+
+
+<script>
+$('.search-icon').on('click', function(event) {
+	event.preventDefault();
+	$('.search-bar').toggleClass('hidden');
+});
+
+$('#open_slide').on('click', function(event) {
+	event.preventDefault();
+	$('body').addClass('side_open');
+});
+//$('.sidenav-overlay').on('click', function() {
+//	$('body').removeClass('side_open');
+//});
+
+$('#search-bar').keyup(function(event) {
+	var search_value = $(this).val();
+	var search_dropdown = $('.search-dropdown');
+	if (search_value == '') {
+		search_dropdown.addClass('hidden');
+		search_dropdown.empty();
+		return false;
+	} else {
+		search_dropdown.removeClass('hidden');
+	}
+    $.post('https://playtubescript.com/aj/search', {search_value: search_value}, function(data, textStatus, xhr) {
+    	if (data.status == 200) {
+    		search_dropdown.html(data.html);
+    	} else {
+	       search_dropdown.addClass('hidden');
+		   search_dropdown.empty();
+		   return false;
+    	}
+    });
+});
+
+jQuery(document).click(function(event){
+    if (!(jQuery(event.target).closest(".search-dropdown").length)) {
+        jQuery('.search-dropdown').addClass('hidden');
+    }
+});
+</script>
+		<div class="clear"></div>
+	</header>
+	
+	<div class="yp_side_menu has_side_menu">
+		<div id="main-container" class="container watch_full_cont   main-content" >
+      			<div class="ads-placment" id="header_ad_"></div>
+      			<div class="announcement-renderer">
+				
+			</div>
+	<div class="hide_trend">
+		<div class="content pt_shadow yp_trans">
+			<div class="home-page-categories">
+				<div class="videos">
+					<div class="row pt_four_videos_trend cus_slider"><div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32601">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="" data-load="">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/1.jpg" alt="Darkness Rising: part 1">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">00:20:44</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="" data-load=""><h4 title="Darkness Rising: part 1" id="short_title32601">Darkness Rising: part 1</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32596">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/gNPysrhxzpLmNoi" data-load="?link1=watch&id=gNPysrhxzpLmNoi">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/2.jpg" alt="Darkness Rising: part 2">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">00:03:23</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/gNPysrhxzpLmNoi" data-load="?link1=watch&id=gNPysrhxzpLmNoi"><h4 title="Darkness Rising: part 2" id="short_title32596">Darkness Rising: part 2</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+	        </div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32634">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/Fsug7ZacTQuS2rZ" data-load="?link1=watch&id=Fsug7ZacTQuS2rZ">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/3.jpg" alt="Darkness Rising: part 3">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'https://playtubescript.com/upload/videos/2020/08/szECRFTivbpDr1p5RoTW_21_d54d4009ced328b5f96ad79c23ec631bffe4e3dc99874d05e1f202133ae9da_small_video_.gif')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:20</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/Fsug7ZacTQuS2rZ" data-load="?link1=watch&id=Fsug7ZacTQuS2rZ"><h4 title="Darkness Rising: part 3" id="short_title32634">Darkness Rising: part 3</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32600">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/TM5Yw8f7MaEXg5E" data-load="?link1=watch&id=TM5Yw8f7MaEXg5E">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/4.jpg" alt="Darkness Rising: part 4">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">00:05:50</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/TM5Yw8f7MaEXg5E" data-load="?link1=watch&id=TM5Yw8f7MaEXg5E"><h4 title="Darkness Rising: part 4" id="short_title32600">Darkness Rising: part 4</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32611">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/sUBShiArfUpqWrZ" data-load="?link1=watch&id=sUBShiArfUpqWrZ">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/5.jpg" alt="Darkness Rising: part 5">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'https://playtubescript.com/upload/videos/2020/08/1ar1oTozJIoU1qhMGUbl_20_def17b9d039d1181a023ff47eaa530c56a3d1ee6bc9cc72337305b183f7e3c_small_video_.gif')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:06</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/sUBShiArfUpqWrZ" data-load="?link1=watch&id=sUBShiArfUpqWrZ"><h4 title="Darkness Rising: part 5" id="short_title32611">Darkness Rising: part 5</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32630">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/P7RmAwBSjQpHRaf" data-load="?link1=watch&id=P7RmAwBSjQpHRaf">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/6.jpg" alt="Masters & Students">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'https://playtubescript.com/upload/videos/2020/08/yxFx9uQhChGJhAYH74Dl_21_281af6aac3440be8820a4f4020e59aff8a84e63921a3ef6d7ade42ef191255_small_video_.gif')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:08</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/P7RmAwBSjQpHRaf" data-load="?link1=watch&id=P7RmAwBSjQpHRaf"><h4 title="Masters & Students" id="short_title32630">Masters & Students</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32593">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/8TuGE6O78rbDKGX" data-load="?link1=watch&id=8TuGE6O78rbDKGX">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/7.jpg" alt="Scrapheap">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">00:02:24</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/8TuGE6O78rbDKGX" data-load="?link1=watch&id=8TuGE6O78rbDKGX"><h4 title="Scrapheap" id="short_title32593">Scrapheap</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32604">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/3pA6WYbutilWSmh" data-load="?link1=watch&id=3pA6WYbutilWSmh">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/8.jpg" alt="Con Job">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'https://playtubescript.com/upload/videos/2020/08/suXVGo6HsgZSoxLXQjRf_20_fad570b72bab4d99dcd872103675cab90719341cc0f4250cdd78246eb52805_small_video_.gif')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:21</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/3pA6WYbutilWSmh" data-load="?link1=watch&id=3pA6WYbutilWSmh"><h4 title="Con Job" id="short_title32604">Con Job</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32612">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/K2IAikIkEbH9aGa" data-load="?link1=watch&id=K2IAikIkEbH9aGa">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/9.jpg" alt="Convoy">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'https://playtubescript.com/upload/videos/2020/08/OGJ1d8rNwPR2xPNGQSUt_20_3e78dba556b6f2abd4695e598fd7d578bd87f1b29815505cb86313d7d38f8b_small_video_.gif')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:09</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/K2IAikIkEbH9aGa" data-load="?link1=watch&id=K2IAikIkEbH9aGa"><h4 title="Convoy" id="short_title32612">Convoy</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-6 keep-padding" data-id="32618">
+	<div class="video-list">
+		<div class="video-list-image">
+			<a href="https://playtubescript.com/watch/CGSV6hZNZJx3N3D" data-load="?link1=watch&id=CGSV6hZNZJx3N3D">
+				<img src="https://sdoriginspro.github.io/SD-Origins-Tube/Project-01/Posters/10.jpg" alt="Deus Ex Machina">
+				<div class="play_hover_btn" onmouseenter="show_gif(this,'')" onmouseleave="hide_gif(this)">
+					<svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"></path></svg>
+				</div>
+				<span class="duration">0:05</span>
+			</a>
+		</div>
+		<div class="pt_vid_fixed_height">
+			<div class="video-list-title">
+				<a href="https://playtubescript.com/watch/CGSV6hZNZJx3N3D" data-load="?link1=watch&id=CGSV6hZNZJx3N3D"><h4 title="Deus Ex Machina" id="short_title32618">Deus Ex Machina</h4></a>
+			</div>
+			<div class="video-list-by">
+				<span><a href="https://sd-origins.blogspot.com" data-load="">SD Origins</a></span><br/>
+				<span>published on </span><span>22 August 2020</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<hr class="dark_hr">
+	</div>
+		
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+      </div>
+      		</div>
+					<footer class="pt_footer">
+				<div class="container-fluid">
+	<div class="container phone-container">
+		<div class="row">
+			<div class="col-sm-5 col-md-5">
+				Copyright © 2020 SD Origins. All rights reserved.
+			</div>
+			<div class="col-sm-7 col-md-7 text-right">
+				<a href="" data-load="?link1=terms&type=terms">Terms of use</a>
+						<a href="" data-load="?link1=terms&type=privacy-policy">Privacy Policy</a>
+						<a href="" data-load="?link1=terms&type=about-us">About us</a>
+						<a href="" data-load="?link1=contact">Contact us</a>
+
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+			</footer>
+			</div>
+		<div class="yp_side_drawer">
+		<span class="open_side_menu_head">
+							<div class="toggle-mode top-header">
+					<label class="switch" title="Mode">
+						<input type="checkbox"  id="toggle-mode-side">
+					</label>
+				</div>
+						<span onclick="javascript:$('body').removeClass('side_open');">
+				<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+			</span>
+		</span>
+		<ul class="sections">
+			<li class="" id="latest_menu_">
+				<a href="https://playtubescript.com/videos/latest" data-load="?link1=videos&page=latest"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> Transformers prime Season 01</a>
+			</li>
+			<hr class="dark_hr">
+			<li class="" id="latest_menu_">
+			<a href="https://playtubescript.com/videos/latest" data-load="?link1=videos&page=latest"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> Transformers prime Season 02</a>
+			</li>
+			<hr class="dark_hr">
+			<li class="" id="latest_menu_">
+			<a href="https://playtubescript.com/videos/latest" data-load="?link1=videos&page=latest"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> Transformers prime Season 03</a>
+			</li>
+			<hr class="dark_hr">
+            <li class="" id="latest_menu_">
+            <a href="https://playtubescript.com/videos/latest" data-load="?link1=videos&page=latest"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> Transformers prime Season 04</a>
+            </li>
+            <hr class="dark_hr">
+       </ul>
+
+</body>
+</html>
